@@ -1,0 +1,5 @@
+com\msme\admin\controllers\LoanListController.class
+com\msme\admin\controllers\MainLayoutController.class
+com\msme\admin\AdminApplication.class
+com\msme\admin\controllers\DashboardController.class
+com\msme\admin\controllers\LoanListController$LoanApplicationViewModel.class

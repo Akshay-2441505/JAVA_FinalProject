@@ -1,0 +1,5 @@
+com\msme\borrower\BorrowerApplication.class
+com\msme\borrower\controllers\ProfileController.class
+com\msme\borrower\controllers\LoginController.class
+com\msme\borrower\controllers\BorrowerMainController.class
+com\msme\borrower\controllers\ApplyLoanController.class
