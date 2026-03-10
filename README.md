@@ -15,3 +15,35 @@ The primary focus of the JavaFX client apps is delivering an exceptionally **sex
 
 ## Repository Setup
 Review `java_conversion_plan.md.resolved` for the base architecture map and check `TODO.md` for the current progress and granular steps.
+
+## How to Run
+
+### 1. Prerequisites
+- **Java 21** or later installed.
+- **Maven** installed and added to your systemic PATH.
+- **PostgreSQL** installed and running on port `5432` with a database named `msme_lending` (username: `postgres`, password: `password`).
+
+### 2. Start the Backend API (Spring Boot)
+Open a terminal in the root project directory and run:
+
+```bash
+cd lending-backend
+mvn spring-boot:run
+```
+*The API will start on `http://localhost:8080` and your Postgres database schema will be auto-generated.*
+
+### 3. Start the Admin App (JavaFX)
+Open a new terminal window at the root project directory:
+
+```bash
+cd lending-client-admin
+mvn clean javafx:run
+```
+
+### 4. Start the Borrower App (JavaFX)
+Open a new terminal window at the root project directory:
+
+```bash
+cd lending-client-borrower
+mvn clean javafx:run
+```
