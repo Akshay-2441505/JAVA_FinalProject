@@ -21,7 +21,7 @@
             <artifactId>javafx-fxml</artifactId>
         </dependency>
         <dependency>
-            <groupId>mkpaz</groupId>
+            <groupId>io.github.mkpaz</groupId>
             <artifactId>atlantafx-base</artifactId>
         </dependency>
         <dependency>
