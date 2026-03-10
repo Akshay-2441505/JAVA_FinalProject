@@ -25,14 +25,14 @@
 - [x] Configure Spring Security with JWT filters for securing endpoints.
 
 ## Phase 3: Client Application - Admin (JavaFX)
-- [ ] Initialize `lending-client-admin` with `org.openjfx.javafx-archetype-fxml`.
-- [ ] Set up HTTP Client logic to communicate with Spring Boot API endpoints.
-- [ ] Design FXML Views using SceneBuilder:
-  - [ ] `Dashboard.fxml`: Uses JavaFX `PieChart` and `LineChart` for Expenses vs. Revenue.
-  - [ ] `LoanList.fxml`: Uses `TableView<LoanApplication>` to list and filter incoming loans.
-  - [ ] `LoanDetail.fxml`: Detail view with action buttons for approving/rejecting statuses.
-- [ ] Implement UI Controllers to map FXML elements to API data.
-- [ ] **UI Polish (Admin)**: Integrate a modern UI library like **AtlantaFX** or **JFoenix** for a sleek, professional Material/modern design. Implement responsive layouts (AnchorPane/BorderPane), smooth transitions, drop shadows, and high-quality charts.
+- [x] Initialize `lending-client-admin` with `org.openjfx.javafx-archetype-fxml`.
+- [x] Set up HTTP Client logic to communicate with Spring Boot API endpoints.
+- [x] Design FXML Views using SceneBuilder:
+  - [x] `Dashboard.fxml`: Uses JavaFX `PieChart` and `LineChart` for Expenses vs. Revenue.
+  - [x] `LoanList.fxml`: Uses `TableView<LoanApplication>` to list and filter incoming loans.
+  - [x] `LoanDetail.fxml`: Detail view with action buttons for approving/rejecting statuses.
+- [x] Implement UI Controllers to map FXML elements to API data.
+- [x] **UI Polish (Admin)**: Integrate a modern UI library like **AtlantaFX** or **JFoenix** for a sleek, professional Material/modern design. Implement responsive layouts (AnchorPane/BorderPane), smooth transitions, drop shadows, and high-quality charts.
 
 ## Phase 4: Client Application - Borrower (JavaFX)
 - [ ] Initialize `lending-client-borrower` JavaFX Maven project.

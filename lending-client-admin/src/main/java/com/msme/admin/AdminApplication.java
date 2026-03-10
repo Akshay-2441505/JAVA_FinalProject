@@ -4,20 +4,20 @@ import atlantafx.base.theme.PrimerDark;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.fxml.FXMLLoader;
 
 public class AdminApplication extends Application {
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws Exception {
         // Apply AtlantaFX Primer Dark theme for a sleek modern look
         Application.setUserAgentStylesheet(new PrimerDark().getUserAgentStylesheet());
 
-        StackPane root = new StackPane(new Label("MSME Lending Admin Area"));
-        Scene scene = new Scene(root, 1024, 768);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MainLayout.fxml"));
+        Scene scene = new Scene(loader.load(), 1200, 800);
 
-        primaryStage.setTitle("MSME Lending Sandbox - Admin");
+        primaryStage.setTitle("MSME Lending Sandbox - Admin Dashboard");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

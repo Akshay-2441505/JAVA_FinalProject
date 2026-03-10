@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.msme.admin.controllers.DashboardController" style="-fx-padding: 20;">
+    
+    <Label text="Admin Dashboard" styleClass="title-1"/>
+
+    <HBox spacing="20.0">
+        <VBox styleClass="card" spacing="10">
+            <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+            <Label text="Total Initialized Loans" styleClass="text-muted"/>
+            <Label fx:id="totalLoansLabel" styleClass="title-2" text="0"/>
+        </VBox>
+        <VBox styleClass="card" spacing="10">
+            <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+            <Label text="Total Requested Volume" styleClass="text-muted"/>
+            <Label fx:id="totalAmountLabel" styleClass="title-2" text="₹0"/>
+        </VBox>
+    </HBox>
+
+    <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+        <VBox styleClass="card" HBox.hgrow="ALWAYS">
+            <Label text="Loan Portfolio Status" style="-fx-padding: 10;"/>
+            <PieChart fx:id="loanStatusChart" />
+        </VBox>
+        <VBox styleClass="card" HBox.hgrow="ALWAYS">
+            <Label text="Monthly Applications" style="-fx-padding: 10;"/>
+            <LineChart fx:id="trendingChart">
+                <xAxis>
+                    <CategoryAxis side="BOTTOM" />
+                </xAxis>
+                <yAxis>
+                    <NumberAxis side="LEFT" />
+                </yAxis>
+            </LineChart>
+        </VBox>
+    </HBox>
+</VBox>
