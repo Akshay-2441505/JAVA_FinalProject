@@ -45,6 +45,6 @@
 - [ ] (Optional) Provide `Canvas` for capturing digital signatures via mouse events.
 
 ## Phase 5: Integration, Testing & Final Polish
-- [ ] Test the End-to-End flow locally (Client -> API -> DB).
-- [ ] Verify Risk Engine flags and correct application status transitions.
-- [ ] Push updates to the GitHub repository.
+- [x] Test the End-to-End flow locally (Client -> API -> DB).
+- [x] Verify Risk Engine flags and correct application status transitions.
+- [x] Push updates to the GitHub repository.
