@@ -1,0 +1,191 @@
+# MSME Digital Lending Sandbox — Java & JavaFX Conversion Plan
+
+## Project Background
+
+The current **MSME Digital Lending Sandbox** is a Loan Origination System (LOS) built with:
+
+| Layer | Current Stack |
+|---|---|
+| Backend API | FastAPI (Python 3.x) |
+| Admin Frontend | React (Vite + JSX) |
+| Borrower App | Flutter (Dart) |
+| Database | PostgreSQL via SQLAlchemy ORM |
+
+This document details how to **re-implement the same system** as a **Java and JavaFX Application** targeting the same functional scope (Borrower applications, Admin review, Risk Engine, reporting).
+
+---
+
+## New Java & JavaFX Tech Stack
+
+Instead of a separate Web and Mobile application, the new architecture will use **JavaFX** to build robust Desktop client applications, powered by a **Java Spring Boot** backend. 
+
+| Layer | Technology |
+|---|---|
+| Language | **Java 21** (or Java 17 LTS) |
+| IDE | **IntelliJ IDEA** or Eclipse |
+| Client UI Framework | **JavaFX** (with FXML and SceneBuilder) |
+| Backend API Framework| **Spring Boot** (Spring Web, Spring Security) |
+| Database Connectivity| **Spring Data JPA (Hibernate)** / JDBC |
+| Database | **PostgreSQL** or **MySQL** |
+| Build Tool | **Maven** or Gradle |
+
+*(Note: If you prefer a simpler 2-tier architecture without an API, JavaFX can connect directly to the database using JDBC or Hibernate. However, a 3-tier Spring Boot architecture provides better security and matches the current FastAPI setup.)*
+
+---
+
+## Architecture Translation
+
+| Current System (Python/Flutter/React) | New System (Java/JavaFX/Spring) | Description |
+|---|---|---|
+| **FastAPI Backend** | **Spring Boot REST API** | Handles all business logic, routing, and database access. |
+| **Flutter Borrower App** | **JavaFX Borrower Desktop App** | A JavaFX desktop client where borrowers can apply for loans, calculate EMIs, and view history. |
+| **React Admin Panel** | **JavaFX Admin Desktop App** | A dashboard built in JavaFX for administrators to review loans, change statuses, and view charts. |
+| **SQLAlchemy ORM** | **Spring Data JPA (Hibernate)** | Manages database connectivity, ORM mapping, and CRUD operations. |
+| **JWT Auth (python-jose)** | **Spring Security + JWT** | Secures endpoints and authenticates users on login. |
+
+---
+
+## Project Structure (Maven Multi-Module Setup)
+
+```text
+MsmeLendingSandbox/
+│
+├── lending-backend/                 ← Spring Boot API 
+│   ├── src/main/java/com/msme/
+│   │   ├── controllers/             ← REST controllers (Auth, Borrower, Admin)
+│   │   ├── models/                  ← JPA Entities (BorrowerProfile, LoanApplication)
+│   │   ├── repositories/            ← Spring Data JPA interfaces
+│   │   ├── services/                ← Business logic (RiskEngine, Amortization)
+│   │   └── security/                ← JWT filters and configuration
+│   └── src/main/resources/
+│       └── application.properties   ← DB connection strings, JWT secrets
+│
+├── lending-client-admin/            ← JavaFX Admin Desktop App
+│   ├── src/main/java/com/msme/admin/
+│   │   ├── controllers/             ← JavaFX UI Controllers
+│   │   └── services/                ← HTTP Client/API fetchers
+│   └── src/main/resources/
+│       └── fxml/
+│           ├── Dashboard.fxml       ← Charts and Stats (using JavaFX Charts)
+│           ├── LoanList.fxml        ← TableView of applications
+│           └── LoanDetail.fxml      ← Detail view with status update buttons
+│
+└── lending-client-borrower/         ← JavaFX Borrower Desktop App
+    ├── src/main/java/com/msme/borrower/
+    │   ├── controllers/             ← JavaFX UI Controllers
+    │   └── services/                ← HTTP Client/API fetchers
+    └── src/main/resources/
+        └── fxml/
+            ├── Login.fxml           ← Authentication screen
+            ├── ApplyLoan.fxml       ← Application form
+            └── Profile.fxml         ← Borrower profile details
+```
+
+---
+
+## Database Connectivity & CRUD 
+
+In Java, Database Connectivity is highly streamlined using **Spring Data JPA** (which builds on top of Hibernate and JDBC).
+
+### 1. The Entity Class (Model)
+```java
+@Entity
+@Table(name = "loan_applications")
+public class LoanApplication {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID appId;
+
+    @Column(nullable = false)
+    private BigDecimal requestedAmount;
+
+    @Column(nullable = false)
+    private Integer tenureMonths;
+
+    @Enumerated(EnumType.STRING)
+    private LoanStatus status;
+
+    // Getters and Setters ...
+}
+```
+
+### 2. The Repository Interface (CRUD Operations)
+By extending `JpaRepository`, Spring automatically generates all the required SQL queries for CRUD operations (Find, Save, Update, Delete).
+
+```java
+@Repository
+public interface LoanApplicationRepository extends JpaRepository<LoanApplication, UUID> {
+    List<LoanApplication> findByStatus(LoanStatus status);
+}
+```
+
+### 3. Application Properties (Database Connection)
+```properties
+# src/main/resources/application.properties
+spring.datasource.url=jdbc:postgresql://localhost:5432/msme_lending
+spring.datasource.username=postgres
+spring.datasource.password=password
+spring.jpa.hibernate.ddl-auto=update  # Automatically updates DB schema
+```
+
+---
+
+## JavaFX UI Design & Components
+
+JavaFX uses **FXML** for markup and basic CSS for styling. Layouts are built visually using **SceneBuilder**.
+
+### Key UI Features Translated to JavaFX:
+
+1. **Tables (Admin Loan List)**
+   * Uses `TableView<LoanApplication>` to list incoming loans. Sortable and filterable.
+2. **Dashboards & Charts**
+   * Uses JavaFX's built-in `PieChart` and `LineChart` to replicate the React Admin Dashboard charts (Expenses vs. Revenue).
+3. **Forms (Borrower Application)**
+   * Uses `GridPane` and `VBox` layouts with `TextField`, `ComboBox` (for Loan Purpose), and `Button` controls.
+4. **Drawing / Signature (Optional)**
+   * JavaFX provides `Canvas` which captures mouse events (`setOnMouseDragged`), allowing for digital signatures or simple "Paint" functionality if ever needed.
+5. **Styling**
+   * JavaFX supports custom `.css` files (`scene.getStylesheets().add("styles.css")`) to theme the Desktop app with modern colors to match the original web app.
+
+---
+
+## The Risk Engine Logic in Java
+
+The Risk Engine can be implemented as a clean Spring Service using standard Java OOP constructs:
+
+```java
+@Service
+public class RiskEngineService {
+
+    public RiskAssessment evaluateRisk(LoanApplication app, BorrowerProfile profile) {
+        int score = 100;
+        List<String> flags = new ArrayList<>();
+
+        // Rule 1: Debt-to-Turnover Ratio
+        if (profile.getAnnualTurnover() != null && profile.getAnnualTurnover().compareTo(BigDecimal.ZERO) > 0) {
+            BigDecimal ratio = app.getRequestedAmount().divide(profile.getAnnualTurnover(), 2, RoundingMode.HALF_UP);
+            if (ratio.compareTo(new BigDecimal("0.5")) > 0) {
+                score -= 25;
+                flags.add("HIGH_DEBT_RATIO");
+            }
+        } else {
+            score -= 20;
+            flags.add("NO_TURNOVER_DECLARED");
+        }
+
+        // Return assessed risk score...
+        return new RiskAssessment(Math.max(0, score), flags);
+    }
+}
+```
+
+---
+
+## Development Workflow
+
+1. **Bootstrap Backend:** Use [Spring Initializr](https://start.spring.io/) to generate a Maven project with dependencies: `Spring Web`, `Spring Data JPA`, `PostgreSQL Driver`, and `Spring Security`.
+2. **Bootstrap Client:** Create a JavaFX Maven project using `org.openjfx.javafx-archetype-fxml`.
+3. **Database Migration:** Start by rewriting the Python [models.py](file:///c:/Users/aakur/OneDrive/Desktop/PSD_Final_Project/backend/app/models/models.py) into Java `@Entity` classes and let Hibernate automatically generate the schema using `spring.jpa.hibernate.ddl-auto=update`.
+4. **Build APIs:** Rewrite FastAPI `@router.get` endpoints as Spring `@RestController` endpoints mapping to `/api/v1/loans/...`.
+5. **Build UI:** Open SceneBuilder, design the FXML screens, wire them up to Java Controllers, and use Java's `HttpClient` to communicate with the Spring Boot API.
