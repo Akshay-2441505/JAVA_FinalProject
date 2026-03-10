@@ -1,7 +1,7 @@
 # MSME Digital Lending Sandbox — Java & JavaFX Conversion TODO List
 
 ## Phase 1: Project Setup & Architecture
-- [ ] Initialize a Maven Multi-Module Project:
+- [x] Initialize a Maven Multi-Module Project:
   - `lending-backend` (Spring Boot API)
   - `lending-client-admin` (JavaFX Admin App)
   - `lending-client-borrower` (JavaFX Borrower App)
