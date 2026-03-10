@@ -21,7 +21,7 @@ Review `java_conversion_plan.md.resolved` for the base architecture map and chec
 ### 1. Prerequisites
 - **Java 21** or later installed.
 - **Maven** installed and added to your systemic PATH.
-- **PostgreSQL** installed and running on port `5432` with a database named `msme_lending` (username: `postgres`, password: `password`).
+- No database installation required! This sandbox uses an **embedded H2 database** that spins up automatically in-memory.
 
 ### 2. Start the Backend API (Spring Boot)
 Open a terminal in the root project directory and run:
@@ -30,7 +30,7 @@ Open a terminal in the root project directory and run:
 cd lending-backend
 ..\.maven\apache-maven-3.9.6\bin\mvn.cmd spring-boot:run
 ```
-*The API will start on `http://localhost:8080` and your Postgres database schema will be auto-generated.*
+*The API will start on `http://localhost:8080`. The embedded H2 database schema will be auto-generated in memory, which you can access via `http://localhost:8080/h2-console` with username `sa` and password `password`.*
 
 ### 3. Start the Admin App (JavaFX)
 Open a new terminal window at the root project directory:
