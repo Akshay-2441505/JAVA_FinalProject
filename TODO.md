@@ -35,13 +35,13 @@
 - [x] **UI Polish (Admin)**: Integrate a modern UI library like **AtlantaFX** or **JFoenix** for a sleek, professional Material/modern design. Implement responsive layouts (AnchorPane/BorderPane), smooth transitions, drop shadows, and high-quality charts.
 
 ## Phase 4: Client Application - Borrower (JavaFX)
-- [ ] Initialize `lending-client-borrower` JavaFX Maven project.
-- [ ] Design FXML Views using SceneBuilder:
-  - [ ] `Login.fxml`: Authentication screen.
-  - [ ] `Profile.fxml`: Borrower profile details.
-  - [ ] `ApplyLoan.fxml`: Form with `GridPane`, `TextField`s, and `ComboBox` for loan purpose.
-- [ ] Implement UI Controllers and integrate API client services.
-- [ ] **UI Polish (Borrower)**: Include styling via custom `.css` files and **AtlantaFX** to match the modern web app experience. Focus on a sexy, premium look with vibrant colors, hover animations, curved buttons, and glassmorphism styling where applicable.
+- [x] Initialize `lending-client-borrower` JavaFX Maven project.
+- [x] Design FXML Views using SceneBuilder:
+  - [x] `Login.fxml`: Authentication screen.
+  - [x] `Profile.fxml`: Borrower profile details.
+  - [x] `ApplyLoan.fxml`: Form with `GridPane`, `TextField`s, and `ComboBox` for loan purpose.
+- [x] Implement UI Controllers and integrate API client services.
+- [x] **UI Polish (Borrower)**: Include styling via custom `.css` files and **AtlantaFX** to match the modern web app experience. Focus on a sexy, premium look with vibrant colors, hover animations, curved buttons, and glassmorphism styling where applicable.
 - [ ] (Optional) Provide `Canvas` for capturing digital signatures via mouse events.
 
 ## Phase 5: Integration, Testing & Final Polish

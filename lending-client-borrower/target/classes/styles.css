@@ -1,0 +1,27 @@
+/* Custom CSS Overrides on top of AtlantaFX for Borrower App */
+
+.sidebar {
+  -fx-background-color: -color-bg-default;
+  -fx-border-color: transparent -color-border-default transparent transparent;
+  -fx-border-width: 1;
+}
+
+.sidebar-btn {
+  -fx-alignment: BASELINE_LEFT;
+  -fx-font-size: 14px;
+  -fx-padding: 10 15;
+  -fx-background-color: transparent;
+  -fx-cursor: hand;
+}
+
+.sidebar-btn:hover {
+  -fx-background-color: -color-bg-subtle;
+}
+
+.card {
+  -fx-background-color: -color-bg-default;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.05), 10, 0, 0, 3);
+  -fx-background-radius: 12;
+  -fx-border-radius: 12;
+  -fx-border-color: -color-border-subtle;
+}

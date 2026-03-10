@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.msme.borrower.controllers.ProfileController" style="-fx-padding: 30;">
+    
+    <Label text="Business Profile" styleClass="title-1"/>
+
+    <GridPane vgap="15" hgap="20" styleClass="card" style="-fx-padding: 20;">
+        <columnConstraints>
+            <ColumnConstraints minWidth="150" />
+            <ColumnConstraints hgrow="ALWAYS" />
+        </columnConstraints>
+
+        <Label text="Company Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="text-bold"/>
+        <Label fx:id="nameLabel" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+        <Label text="Email Address:" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="text-bold"/>
+        <Label fx:id="emailLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+        <Label text="GSTIN:" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="text-bold"/>
+        <Label fx:id="gstinLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+        <Label text="Declared Turnover:" GridPane.columnIndex="0" GridPane.rowIndex="3" styleClass="text-bold"/>
+        <Label fx:id="turnoverLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+    </GridPane>
+
+</VBox>
