@@ -9,20 +9,20 @@
 - [ ] Create `README.md` and document the project structure.
 
 ## Phase 2: Backend API (Spring Boot)
-- [ ] Setup `application.properties` with PostgreSQL database connection URL, credentials, and `spring.jpa.hibernate.ddl-auto=update`.
-- [ ] Implement JPA Entities (`@Entity` classes) mapped to tables:
-  - [ ] `BorrowerProfile`
-  - [ ] `LoanApplication`
-  - [ ] (Others mapped from Python `models.py`)
-- [ ] Create Spring Data JPA Repositories (e.g., `LoanApplicationRepository`).
-- [ ] Implement Business Logic Services:
-  - [ ] `RiskEngineService` (Calculate risk scores and evaluate applications based on debt-to-turnover ratio, etc.)
-  - [ ] `AmortizationService` (Calculate EMI schedules)
-- [ ] Build REST Controllers (`@RestController` mapping `/api/v1/loans/...`):
-  - [ ] Auth Controller (Login/Register)
-  - [ ] Borrower Controller
-  - [ ] Admin Controller
-- [ ] Configure Spring Security with JWT filters for securing endpoints.
+- [x] Setup `application.properties` with PostgreSQL database connection URL, credentials, and `spring.jpa.hibernate.ddl-auto=update`.
+- [x] Implement JPA Entities (`@Entity` classes) mapped to tables:
+  - [x] `BorrowerProfile`
+  - [x] `LoanApplication`
+  - [x] (Others mapped from Python `models.py`)
+- [x] Create Spring Data JPA Repositories (e.g., `LoanApplicationRepository`).
+- [x] Implement Business Logic Services:
+  - [x] `RiskEngineService` (Calculate risk scores and evaluate applications based on debt-to-turnover ratio, etc.)
+  - [x] `AmortizationService` (Calculate EMI schedules)
+- [x] Build REST Controllers (`@RestController` mapping `/api/v1/loans/...`):
+  - [x] Auth Controller (Login/Register)
+  - [x] Borrower Controller
+  - [x] Admin Controller
+- [x] Configure Spring Security with JWT filters for securing endpoints.
 
 ## Phase 3: Client Application - Admin (JavaFX)
 - [ ] Initialize `lending-client-admin` with `org.openjfx.javafx-archetype-fxml`.
