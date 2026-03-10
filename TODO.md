@@ -32,6 +32,7 @@
   - [ ] `LoanList.fxml`: Uses `TableView<LoanApplication>` to list and filter incoming loans.
   - [ ] `LoanDetail.fxml`: Detail view with action buttons for approving/rejecting statuses.
 - [ ] Implement UI Controllers to map FXML elements to API data.
+- [ ] **UI Polish (Admin)**: Integrate a modern UI library like **AtlantaFX** or **JFoenix** for a sleek, professional Material/modern design. Implement responsive layouts (AnchorPane/BorderPane), smooth transitions, drop shadows, and high-quality charts.
 
 ## Phase 4: Client Application - Borrower (JavaFX)
 - [ ] Initialize `lending-client-borrower` JavaFX Maven project.
@@ -40,7 +41,7 @@
   - [ ] `Profile.fxml`: Borrower profile details.
   - [ ] `ApplyLoan.fxml`: Form with `GridPane`, `TextField`s, and `ComboBox` for loan purpose.
 - [ ] Implement UI Controllers and integrate API client services.
-- [ ] Include styling via custom `.css` files (`scene.getStylesheets().add("styles.css")`) to match the web app colors.
+- [ ] **UI Polish (Borrower)**: Include styling via custom `.css` files and **AtlantaFX** to match the modern web app experience. Focus on a sexy, premium look with vibrant colors, hover animations, curved buttons, and glassmorphism styling where applicable.
 - [ ] (Optional) Provide `Canvas` for capturing digital signatures via mouse events.
 
 ## Phase 5: Integration, Testing & Final Polish
