@@ -28,7 +28,7 @@ Open a terminal in the root project directory and run:
 
 ```bash
 cd lending-backend
-mvn spring-boot:run
+..\.maven\apache-maven-3.9.6\bin\mvn.cmd spring-boot:run
 ```
 *The API will start on `http://localhost:8080` and your Postgres database schema will be auto-generated.*
 
@@ -37,7 +37,7 @@ Open a new terminal window at the root project directory:
 
 ```bash
 cd lending-client-admin
-mvn clean javafx:run
+..\.maven\apache-maven-3.9.6\bin\mvn.cmd clean javafx:run
 ```
 
 ### 4. Start the Borrower App (JavaFX)
@@ -45,5 +45,6 @@ Open a new terminal window at the root project directory:
 
 ```bash
 cd lending-client-borrower
-mvn clean javafx:run
+..\.maven\apache-maven-3.9.6\bin\mvn.cmd clean javafx:run
 ```
+
